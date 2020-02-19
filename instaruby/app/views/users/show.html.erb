@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-8 basic-info">
     <div class="user-wrapper">
-      <h2 class="username">vek_malek</h2>
+      <h2 class="username"><%= current_user.username %></h2>
       <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
         <button>Edit Profile</button>
       </a>
@@ -15,8 +15,8 @@
         <li><span>190</span> followers</li>
         <li><span>340</span> following</li>
       </ul>
-      <h2 class="name">Vek Malek</h2>
-      <a class="website">velka.com</a>
+      <h2 class="name"><%= current_user.name %></h2>
+      <%= link_to current_user.website, current_user.website, class: 'website' %>
     </div>
   </div>
 </div>
@@ -39,8 +39,8 @@
 <div class="user-images">
   <% @posts.each do |post| %>
     <div class="wrapper">
-      <%=link_to post_path(post) do%>
-        <%=image_tag post.image%>
+      <%= link_to post_path(post) do %>
+        <%= image_tag post.image %>
       <% end %>
     </div>
   <% end %>
