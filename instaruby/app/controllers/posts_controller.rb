@@ -12,4 +12,10 @@ class PostsController < ApplicationController
     def show
         @post = Post.find(params[:id])
     end
+
+    def destroy
+        @post = current_user.posts.find(params[:id])
+        @post.destroy
+        redirect_to user_path(current_user)
+    end
 end
